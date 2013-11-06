@@ -70,6 +70,7 @@ class Mdl_users extends CI_Model{
 
 		$data = array(
 			'active' => 1,
+            'role' => 1,
 			'key' => random_string('unique')
 		);
 		$this->db->update('users', $data, array('key' => $key));
