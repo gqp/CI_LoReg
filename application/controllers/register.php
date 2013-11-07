@@ -20,7 +20,7 @@ class Register extends CI_Controller{
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.host.com', //Put your host here
-            'smtp_user' => 'email@addres.com', //Email Username here
+            'smtp_user' => 'email@address.com', //Email Username here
             'smtp_pass' => 'email_password', // Email password here
             'smtp_port' => 587, //Typically 25 or 587 is used.
             'charset' => 'utf-8',
@@ -50,7 +50,7 @@ class Register extends CI_Controller{
 
         if ($this->form_validation->run()){
             
-			//Generate random encrypted key
+			//Generate random 32 character MD5 encrypted unique key
 			$key = random_string('unique');
 
 			$this->email->from('email@address.com', 'Name Here');
