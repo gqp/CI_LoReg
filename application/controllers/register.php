@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Register extends CI_Controller {
+class Register extends CI_Controller{
 
-    public function __construct() {
+    public function __construct(){
         parent::__construct();
     }
 
@@ -11,32 +11,31 @@ class Register extends CI_Controller {
 
     }
 
-    public function register()
-    {
+    public function register(){
         $this->load->view('register');
     }
 
     public function submit(){
-
-
-
 		// Email Settings
         $config = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'smtp.perfora.net',
-            'smtp_user' => 'gp@garrickplaisted.com',
-            'smtp_pass' => 'nedyac0920',
-            'smtp_port' => 587,
+            'smtp_host' => 'smtp.host.com', //Put your host here
+            'smtp_user' => 'email@addres.com', //Email Username here
+            'smtp_pass' => 'email_password', // Email password here
+            'smtp_port' => 587, //Typically 25 or 587 is used.
             'charset' => 'utf-8',
             'mailtype' => 'html',
+            // On some hosts like 1and1 email were not successfully making it through the host.
+            // I used $this->email->print_debugger() and it showed the emails were sent successfully from the script.
+            // So I added validate => FALSE and the emails went through. So I kept it :)
             'validate' => 'FALSE',
             'useragent' => 'none',
             'crlf' => "\r\n",
             'newline' => "\r\n"
         );
-
-        $this->load->library('email', $config);
+			   
         $this->load->library('form_validation');
+		$this->load->library('email', $config);
 		$this->load->model('mdl_users');
 		
 		
@@ -54,25 +53,24 @@ class Register extends CI_Controller {
 			//Generate random encrypted key
 			$key = random_string('unique');
 
-			$this->email->from('gp@garrickplaisted.com', 'Garrick');
+			$this->email->from('email@address.com', 'Name Here');
 			$this->email->to($this->input->post('email'));
-			$this->email->subject("Confirm your registration with us!");
+			$this->email->subject("Please confirm your registration with us!");
 			
 			$message = "<p>Thank you for registering with us</p>";
 			$message .= "<p><a href='".base_url('register/confirm')."/$key'>Click here</a> to confirm your registration.</p>";
 			
 			$this->email->message($message);
-			
-			
+
 			if($this->mdl_users->add_user($key)){
 				//Send Email and if added to db
 				if($this->email->send()){
 					$this->load->view('confirmation_thanks');
 				}else{
-					echo 'Something went wrong.';
+					echo 'Oh snap, something went wrong.';
 				}
 			}else{
-				echo 'user not added';
+				echo 'Oh snap, user not added';
 			}
 
         }else{
@@ -91,7 +89,7 @@ class Register extends CI_Controller {
 			}
 			
 		}else{
-			echo "Not valid key";
+			echo "Well, it appears this is not a valid key!";
 		}
     }
 
