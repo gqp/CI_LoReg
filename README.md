@@ -3,7 +3,7 @@ Codeigniter Login and Registration System
 
 This Codeigniter Login and Registration System is a work in progress. I developed this with simplicity in mind.
 I wanted people to be able to use this code and not have to worry about the look of it. So there is no styling
-it at all. Only basic html elements. This allows to to take it and eaisly add you own styles or incorporate it
+at all. Only basic html elements. This allows to to take it and eaisly add you own styles or incorporate it
 into a bootstrap template or any template for that matter. So it may be ugly, but it's on purpose.
 
 Registration Page:
