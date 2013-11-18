@@ -35,7 +35,7 @@
         <?php } ?>
     </table>
     <hr>
-    <a href=''>Add User</a> | <a href=''>Users</a> |  <a href='<?php echo site_url('members'); ?>'>Members Area</a> | <a href='<?php echo site_url('member/member_profile'); ?>'>View Profile</a> | <a href='<?php echo site_url('login/logout'); ?>'>Logout</a>
+    <a href=''>Add User</a> | <a href=''>Users</a> |  <a href='<?php echo site_url('members'); ?>'>Members Area</a> | <a href='<?php echo site_url('member_profile'); ?>'>View Profile</a> | <a href='<?php echo site_url('login/logout'); ?>'>Logout</a>
 </div>
 
 </body>
