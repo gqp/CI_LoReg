@@ -16,7 +16,7 @@ Registration Page:
 Registration Process:
 ---------------------
   
-  Upon registtration submit:
+  Upon registration submit:
   
   * User is added db
   * Unique 32 character encrypted key is added
