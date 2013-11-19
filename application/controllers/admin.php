@@ -48,5 +48,5 @@ class Admin extends CI_Controller {
         $data['query'] = $this->mdl_users->get_all_users();
         $this->load->view('users', $data);
     }
-	
+
 }
