@@ -16,12 +16,13 @@ Registration Page:
 Registration Process:
 ---------------------
   
-  Upon registtration submit:
+  Upon registration submit:
   
   * User is added db
   * Unique 32 character encrypted key is added
   * User is set as not active
-  * User is added with no role Email confirmation is sent to user with link to confirm
+  * User is added with no role 
+  * Confirmation email sent
   
   Upon Confirmation (User clicks link):
 
