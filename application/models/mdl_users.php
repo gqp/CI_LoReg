@@ -53,6 +53,18 @@ class Mdl_users extends CI_Model{
             return false;
         }
     }
+
+    public function get_user_details($username){
+        $table = $this->get_table();
+        $this->db->where('username', $username);
+        $query = $this->db->get($table);
+
+        if($query->num_rows() == 1){
+            return $query;
+        }else{
+            return false;
+        }
+    }
 	
 	public function is_key_valid($key){
         $table = $this->get_table();
