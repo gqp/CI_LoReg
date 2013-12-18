@@ -11,7 +11,7 @@
 <div id="container">
     <h1>This is for Members Only!</h1>
     <br />
-    <a href='<?php echo site_url('login'); ?>'>Login</a>
+    <a href='<?php echo site_url('login'); ?>'>Login</a> | <a href='<?php echo site_url('register'); ?>'>Register</a>
 
     <br />
 

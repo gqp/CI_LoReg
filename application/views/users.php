@@ -30,7 +30,7 @@
                 <td><?php echo $row->email; ?></td>
                 <td><?php if($row->role == 100){echo "Admin";}elseif($row->role == 1){echo "Member";}elseif($row->role == 0){echo "Guest";} ?></td>
                 <td><?php if($row->active == 1){ echo "Active";}else echo "Not Active"; ?></td>
-                <td><a href='<?php echo site_url('admin/user/' . $row->username . '/edit'); ?>'>Edit</a> | <?php if($row->active == 1){ echo "<a href=''>Activate</a>";}else echo "<a href=''>Disable</a>"; ?></td>
+                <td><a href='<?php echo site_url('admin/edit/' . $row->username); ?>'>Edit</a> | <?php if($row->active == 1){ echo "<a href=''>Activate</a>";}else echo "<a href=''>Disable</a>"; ?></td>
             </tr>
         <?php } ?>
     </table>

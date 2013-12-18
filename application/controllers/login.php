@@ -36,7 +36,8 @@ class Login extends CI_Controller {
 
             $data = array(
                 'username' => $username,
-                'logged_in' => 1
+                'logged_in' => 1,
+                'role' => $role
             );
 
             if($active == 1 && $role > 0){

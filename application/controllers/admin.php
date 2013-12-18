@@ -53,14 +53,37 @@ class Admin extends CI_Controller {
 
         if($this->session->userdata('logged_in')){
 
-            $admin = $this->session->userdata('username');
-            $query = $this->mdl_users->get_logged_in_user_data($admin);
+            $user = $this->session->userdata('username');
+            $isAdmin = $this->mdl_users->isAdmin($user);
 
-            foreach($query->result() as $row){
-                $role = $row->role;
-            }
+            if($isAdmin){
 
-            if($role == 100){
+                $this->load->model('mdl_users');
+                $query = $this->mdl_users->get_user_details($username);
+
+
+                foreach($query->result() as $row){
+                    $data['username'] = $row->username;
+                    $data['firstname'] = $row->firstname;
+                    $data['lastname'] = $row->lastname;
+                    $data['email'] = $row->email;
+                    $data['role'] = $row->role;
+                    $data['active'] = $row->active;
+                }
+
+                $this->load->view('user_details', $data);
+            }else{ echo "You are not an admin"; }
+        }else{ redirect('login');}
+    }
+
+    public function edit($username){
+
+        if($this->session->userdata('logged_in')){
+
+            $user = $this->session->userdata('username');
+            $isAdmin = $this->mdl_users->isAdmin($user);
+
+            if($isAdmin){
 
                 $this->load->model('mdl_users');
                 $query = $this->mdl_users->get_user_details($username);
@@ -74,8 +97,8 @@ class Admin extends CI_Controller {
                     $data['active'] = $row->active;
                 }
 
-                $this->load->view('user_details', $data);
+                $this->load->view('editUser', $data);
             }else{ echo "You are not an admin"; }
-        }else{ echo "You are not logged in";}
+        }else{ redirect('login');}
     }
 }

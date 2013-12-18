@@ -120,5 +120,17 @@ class Mdl_users extends CI_Model{
         $this->db->update($table, $data);
         return true;
     }
+
+    public function isAdmin($username){
+        $table = $this->get_table();
+        $this->db->where('username', $username);
+        $this->db->where('role', 100);
+        $query = $this->db->get($table);
+        if($query->num_rows() == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
